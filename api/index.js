@@ -1,6 +1,15 @@
-const express = require('express');
+import express  from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
+
 const app = express();
 
-app.listen(3000, () => {
-    console.log('Server is running port 3000!');
+mongoose.connect(process.env.db).then(() => {
+    app.listen(3000, () => {
+        console.log('Server is running port 3000!')
+    });
+
+}).catch((error) => {
+    console.log(error, 'Error whiule connecting to database');
 })
