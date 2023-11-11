@@ -2,10 +2,12 @@ import express  from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routes/user.route.js';
+import userAuthenticationRouter from './routes/user.auth.js'
 
 dotenv.config();
 
 const app = express();
+app.use(express.json());
 
 mongoose.connect(process.env.db).then(() => {
     console.log('Database connected');
@@ -17,3 +19,4 @@ mongoose.connect(process.env.db).then(() => {
 });
 
 app.use('/api/user', userRouter);
+app.use('/api/auth', userAuthenticationRouter);
