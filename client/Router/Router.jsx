@@ -14,10 +14,10 @@ const Routers = () => {
                 <Header/>
                 <Routes>
                     <Route exact path='/' element={<Home/>}/>
-                    <Route path='/' element={<About/>}/>
-                    <Route path='/' element={<Profile/>}/>
-                    <Route path='/' element={<Signin/>}/>
-                    <Route path='/' element={<Signup/>}/>
+                    <Route path='/about' element={<About/>}/>
+                    <Route path='/profile' element={<Profile/>}/>
+                    <Route path='/signin' element={<Signin/>}/>
+                    <Route path='/signup' element={<Signup/>}/>
                 </Routes>
             </Router>
         </>
