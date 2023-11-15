@@ -1,7 +1,6 @@
 import express  from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import userRouter from './routes/user.route.js';
 import userAuthenticationRouter from './routes/user.auth.js'
 
 dotenv.config();
@@ -18,7 +17,6 @@ mongoose.connect(process.env.db).then(() => {
     console.log(error, 'Error while connecting to database');
 });
 
-app.use('/api/user', userRouter);
 app.use('/api/auth', userAuthenticationRouter);
 
 app.use((err, req, res, next) => {
