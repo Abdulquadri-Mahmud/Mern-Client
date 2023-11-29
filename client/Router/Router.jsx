@@ -6,6 +6,7 @@ import Profile from '../src/pages/Profile';
 import Signin from '../src/pages/Signin';
 import Signup from '../src/pages/Signup';
 import Header from '../src/components/Header';
+import PrivateRoute from '../src/components/PrivateRoute';
 
 const Routers = () => {
     return ( 
@@ -13,11 +14,13 @@ const Routers = () => {
             <Router>
                 <Header/>
                 <Routes>
-                    <Route exact path='/' element={<Home/>}/>
+                    <Route path='/' element={<Home/>}/>
                     <Route path='/about' element={<About/>}/>
-                    <Route path='/profile' element={<Profile/>}/>
                     <Route path='/signin' element={<Signin/>}/>
                     <Route path='/signup' element={<Signup/>}/>
+                    <Route element={<PrivateRoute/>}>
+                        <Route path='/profile' element={<Profile/>}/>
+                    </Route>
                 </Routes>
             </Router>
         </>
