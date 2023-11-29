@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
+import GoogleAuth from '../components/GoogleAuth';
 const Signup = () => {
     const [formData, setFormData] = useState({});
     const [error, setError] = useState(null);
@@ -45,6 +46,7 @@ const Signup = () => {
                 <input type="email" id="email" placeholder="Email" className="border p-3 rounded-lg" onChange={handleChange} />
                 <input type="password" id="password" placeholder="Password" className="border p-3 rounded-lg" onChange={handleChange} />
                 <button disabled={loading} className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80">{loading ? 'Loading...' : 'Sign Up'}</button>
+                <GoogleAuth/>
             </form>
             <div className="flex gap-2 mt-5">
                 <p>Have an account?</p>
