@@ -1,12 +1,17 @@
 import express  from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import userAuthenticationRouter from './routes/user.auth.js'
+import userAuthenticationRouter from './routes/user.auth.js';
+import userRoutes from './routes/user.routes.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const app = express();
+
 app.use(express.json());
+
+app.use(cookieParser())
 
 mongoose.connect(process.env.db).then(() => {
     console.log('Database connected');
@@ -18,6 +23,7 @@ mongoose.connect(process.env.db).then(() => {
 });
 
 app.use('/api/auth', userAuthenticationRouter);
+app.use('/api/user', userRoutes);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;

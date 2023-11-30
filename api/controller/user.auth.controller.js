@@ -1,8 +1,9 @@
 import User from "../models/user.models.js";
 import bcryptjs from 'bcryptjs';
-import { errorHandler } from "../utils/error.js";
+import {errorHandler} from "../utils/error.js";
+
 import jwt from 'jsonwebtoken'
-import e from "express";
+// import e from "express";
 
 export const signup = async(req, res, next) => {
     const {username, email, password} = req.body;
@@ -10,7 +11,7 @@ export const signup = async(req, res, next) => {
     const newUser = new User({username, email, password : hashedPassword});
     try {
         await newUser.save()
-        res.status(201).json('User Created Successfully!');   
+        res.status(201).json('User Created Successfully!');
     } catch (error) {
         // next(errorHandler(550, 'Error while creating user'));
         next(error)
